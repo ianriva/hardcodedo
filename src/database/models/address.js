@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
   };
   Address.init({
     direction: DataTypes.STRING,
-    num: DataTypes.NUMBER
+    num: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Address',

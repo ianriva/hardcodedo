@@ -1,8 +1,34 @@
 const db = require("./src/database/models");
-const controllerTutorial = require('./src/controller/tutorialController');
-const controllerComments = require('./src/controller/commentsController');
+//const controllerTutorial = require('./src/controller/tutorialController');
+//const controllerComments = require('./src/controller/commentsController');
+const addressController = require('./src/controller/addressController');
+const personController = require('./src/controller/personController');
 
 const run = async () => {
+    address1 = await addressController.create({
+        direction: "Rioja",
+        num: 87
+    });
+    console.log(`Dirección creada: ${address1}`)
+    address2 = await addressController.create({
+        direction: "San Martín",
+        num: 1223
+    });
+    console.log(`Dirección creada: ${address2}`)
+    person1 = await personController.create(address1.id, {
+        name: "Juan Perez"
+    });
+    console.log(`Dirección creada: ${person1}`)
+    person2 = await personController.create(address1.id, {
+        name: "Roberto Martinez"
+    });
+    console.log(`Dirección creada: ${person2}`)
+    person3 = await personController.create(address2.id, {
+        name: "Marta skenfung"
+    });
+    console.log(`Dirección creada: ${person3}`)
+}
+/* const run = async () => {
 
     const tut1 = await controllerTutorial.create({
         title: "Tut#1",
@@ -64,7 +90,7 @@ console.log(">> Comment id=" + comment2.id,JSON.stringify(comment2Data, null, 2)
 const tutorials = await controllerTutorial.findAll();
 console.log(">> All tutorials", JSON.stringify(tutorials, null, 2));
 
-};
+}; */
 
 // db.sequelize.sync();
 db.sequelize.sync({ force: false}).
